@@ -284,7 +284,7 @@ def main():
     schedule.every(1).minutes.do(update_values, client=client).tag("updating value history")
     schedule.every(1).minutes.do(prune_scout_history, hours=SCOUT_HISTORY_PRUNE_TIME).tag("pruning scout history")
     schedule.every(1).hours.do(prune_value_history).tag("pruning value history")
-
+    print("Start")
     while True:
         schedule.run_pending()
         time.sleep(1)
