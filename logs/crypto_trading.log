@@ -1,0 +1,4 @@
+2021-03-04 13:25:25,680 - crypto_trader_logger - INFO - Started
+2021-03-04 13:25:26,375 - crypto_trader_logger - INFO - Creating database schema if it doesn't already exist
+2021-03-04 15:48:52,914 - crypto_trader_logger - INFO - Started
+2021-03-04 15:48:53,716 - crypto_trader_logger - INFO - Creating database schema if it doesn't already exist
