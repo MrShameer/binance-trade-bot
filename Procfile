@@ -1,1 +1,1 @@
-worker: python binance_trade_bot/crypto_trading.py
+worker: python binance-trade-bot/binance_trade_bot/crypto_trading.py
