@@ -9,110 +9,110 @@ CFG_FL_NAME = "user.cfg"
 
 
 class Config:  # pylint: disable=too-few-public-methods,too-many-instance-attributes
-    def __init__(self):
-        # Init config
-        config = configparser.ConfigParser()
-        config["DEFAULT"] = {
-            "bridge": "",
-            "scout_multiplier": "",
-            "scout_sleep_time": "",
-            "hourToKeepScoutHistory": "",
-            "tld": "",
-            "strategy": "",
-            "sell_timeout": "",
-            "buy_timeout": "",
-        }
+	def __init__(self):
+		# Init config
+		config = configparser.ConfigParser()
+		config["DEFAULT"] = {
+			"bridge": "",
+			"scout_multiplier": "",
+			"scout_sleep_time": "",
+			"hourToKeepScoutHistory": "",
+			"tld": "",
+			"strategy": "",
+			"sell_timeout": "",
+			"buy_timeout": "",
+		}
 
-       ''' if not os.path.exists(CFG_FL_NAME):
-            print("No configuration file (user.cfg) found! See README. Assuming default config...")
-            config[USER_CFG_SECTION] = {}
-        else:
-            config.read(CFG_FL_NAME)'''
-
-
-        '''
-        self.BRIDGE_SYMBOL = os.environ.get("BRIDGE_SYMBOL") or config.get(USER_CFG_SECTION, "bridge")
-        self.BRIDGE = Coin(self.BRIDGE_SYMBOL, False)
-
-        # Prune settings
-        self.SCOUT_HISTORY_PRUNE_TIME = float(
-            os.environ.get("HOURS_TO_KEEP_SCOUTING_HISTORY") or config.get(USER_CFG_SECTION, "hourToKeepScoutHistory")
-        )
-
-        # Get config for scout
-        self.SCOUT_MULTIPLIER = float(
-            os.environ.get("SCOUT_MULTIPLIER") or config.get(USER_CFG_SECTION, "scout_multiplier")
-        )
-        self.SCOUT_SLEEP_TIME = int(
-            os.environ.get("SCOUT_SLEEP_TIME") or config.get(USER_CFG_SECTION, "scout_sleep_time")
-        )
-
-        # Get config for binance
-        self.BINANCE_API_KEY = os.environ.get("API_KEY") or config.get(USER_CFG_SECTION, "api_key")
-        self.BINANCE_API_SECRET_KEY = os.environ.get("API_SECRET_KEY") or config.get(USER_CFG_SECTION, "api_secret_key")
-        self.BINANCE_TLD = os.environ.get("TLD") or config.get(USER_CFG_SECTION, "tld")
-
-        # Get supported coin list from the environment
-        supported_coin_list = [
-            coin.strip() for coin in os.environ.get("SUPPORTED_COIN_LIST", "").split() if coin.strip()
-        ]
-        # Get supported coin list from supported_coin_list file
-        if not supported_coin_list and os.path.exists("supported_coin_list"):
-            with open("supported_coin_list") as rfh:
-                for line in rfh:
-                    line = line.strip()
-                    if not line or line.startswith("#") or line in supported_coin_list:
-                        continue
-                    supported_coin_list.append(line)
-        self.SUPPORTED_COIN_LIST = supported_coin_list
-
-        self.CURRENT_COIN_SYMBOL = os.environ.get("CURRENT_COIN_SYMBOL") or config.get(USER_CFG_SECTION, "current_coin")
-
-        self.STRATEGY = os.environ.get("STRATEGY") or config.get(USER_CFG_SECTION, "strategy")
-
-        self.SELL_TIMEOUT = os.environ.get("SELL_TIMEOUT") or config.get(USER_CFG_SECTION, "sell_timeout")
-        self.BUY_TIMEOUT = os.environ.get("BUY_TIMEOUT") or config.get(USER_CFG_SECTION, "buy_timeout")
-        '''
+		''' if not os.path.exists(CFG_FL_NAME):
+			print("No configuration file (user.cfg) found! See README. Assuming default config...")
+			config[USER_CFG_SECTION] = {}
+		else:
+			config.read(CFG_FL_NAME)'''
 
 
-        self.BRIDGE_SYMBOL = os.environ.get("BRIDGE_SYMBOL")
-        self.BRIDGE = Coin(self.BRIDGE_SYMBOL, False)
+		'''
+		self.BRIDGE_SYMBOL = os.environ.get("BRIDGE_SYMBOL") or config.get(USER_CFG_SECTION, "bridge")
+		self.BRIDGE = Coin(self.BRIDGE_SYMBOL, False)
 
-        # Prune settings
-        self.SCOUT_HISTORY_PRUNE_TIME = float(
-            os.environ.get("HOURS_TO_KEEP_SCOUTING_HISTORY")
-        )
+		# Prune settings
+		self.SCOUT_HISTORY_PRUNE_TIME = float(
+			os.environ.get("HOURS_TO_KEEP_SCOUTING_HISTORY") or config.get(USER_CFG_SECTION, "hourToKeepScoutHistory")
+		)
 
-        # Get config for scout
-        self.SCOUT_MULTIPLIER = float(
-            os.environ.get("SCOUT_MULTIPLIER")
-        )
-        self.SCOUT_SLEEP_TIME = int(
-            os.environ.get("SCOUT_SLEEP_TIME")
-        )
+		# Get config for scout
+		self.SCOUT_MULTIPLIER = float(
+			os.environ.get("SCOUT_MULTIPLIER") or config.get(USER_CFG_SECTION, "scout_multiplier")
+		)
+		self.SCOUT_SLEEP_TIME = int(
+			os.environ.get("SCOUT_SLEEP_TIME") or config.get(USER_CFG_SECTION, "scout_sleep_time")
+		)
 
-        # Get config for binance
-        self.BINANCE_API_KEY = os.environ.get("API_KEY")
-        self.BINANCE_API_SECRET_KEY = os.environ.get("API_SECRET_KEY")
-        self.BINANCE_TLD = os.environ.get("TLD")
+		# Get config for binance
+		self.BINANCE_API_KEY = os.environ.get("API_KEY") or config.get(USER_CFG_SECTION, "api_key")
+		self.BINANCE_API_SECRET_KEY = os.environ.get("API_SECRET_KEY") or config.get(USER_CFG_SECTION, "api_secret_key")
+		self.BINANCE_TLD = os.environ.get("TLD") or config.get(USER_CFG_SECTION, "tld")
 
-        # Get supported coin list from the environment
-        supported_coin_list = [
-            coin.strip() for coin in os.environ.get("SUPPORTED_COIN_LIST", "").split() if coin.strip()
-        ]
-        # Get supported coin list from supported_coin_list file
-        if not supported_coin_list and os.path.exists("supported_coin_list"):
-            with open("supported_coin_list") as rfh:
-                for line in rfh:
-                    line = line.strip()
-                    if not line or line.startswith("#") or line in supported_coin_list:
-                        continue
-                    supported_coin_list.append(line)
-        self.SUPPORTED_COIN_LIST = supported_coin_list
+		# Get supported coin list from the environment
+		supported_coin_list = [
+			coin.strip() for coin in os.environ.get("SUPPORTED_COIN_LIST", "").split() if coin.strip()
+		]
+		# Get supported coin list from supported_coin_list file
+		if not supported_coin_list and os.path.exists("supported_coin_list"):
+			with open("supported_coin_list") as rfh:
+				for line in rfh:
+					line = line.strip()
+					if not line or line.startswith("#") or line in supported_coin_list:
+						continue
+					supported_coin_list.append(line)
+		self.SUPPORTED_COIN_LIST = supported_coin_list
 
-        self.CURRENT_COIN_SYMBOL = os.environ.get("CURRENT_COIN_SYMBOL")
+		self.CURRENT_COIN_SYMBOL = os.environ.get("CURRENT_COIN_SYMBOL") or config.get(USER_CFG_SECTION, "current_coin")
 
-        self.STRATEGY = os.environ.get("STRATEGY")
+		self.STRATEGY = os.environ.get("STRATEGY") or config.get(USER_CFG_SECTION, "strategy")
 
-        self.SELL_TIMEOUT = os.environ.get("SELL_TIMEOUT")
-        self.BUY_TIMEOUT = os.environ.get("BUY_TIMEOUT")
+		self.SELL_TIMEOUT = os.environ.get("SELL_TIMEOUT") or config.get(USER_CFG_SECTION, "sell_timeout")
+		self.BUY_TIMEOUT = os.environ.get("BUY_TIMEOUT") or config.get(USER_CFG_SECTION, "buy_timeout")
+		'''
+
+
+		self.BRIDGE_SYMBOL = os.environ.get("BRIDGE_SYMBOL")
+		self.BRIDGE = Coin(self.BRIDGE_SYMBOL, False)
+
+		# Prune settings
+		self.SCOUT_HISTORY_PRUNE_TIME = float(
+			os.environ.get("HOURS_TO_KEEP_SCOUTING_HISTORY")
+		)
+
+		# Get config for scout
+		self.SCOUT_MULTIPLIER = float(
+			os.environ.get("SCOUT_MULTIPLIER")
+		)
+		self.SCOUT_SLEEP_TIME = int(
+			os.environ.get("SCOUT_SLEEP_TIME")
+		)
+
+		# Get config for binance
+		self.BINANCE_API_KEY = os.environ.get("API_KEY")
+		self.BINANCE_API_SECRET_KEY = os.environ.get("API_SECRET_KEY")
+		self.BINANCE_TLD = os.environ.get("TLD")
+
+		# Get supported coin list from the environment
+		supported_coin_list = [
+			coin.strip() for coin in os.environ.get("SUPPORTED_COIN_LIST", "").split() if coin.strip()
+		]
+		# Get supported coin list from supported_coin_list file
+		if not supported_coin_list and os.path.exists("supported_coin_list"):
+			with open("supported_coin_list") as rfh:
+				for line in rfh:
+					line = line.strip()
+					if not line or line.startswith("#") or line in supported_coin_list:
+						continue
+					supported_coin_list.append(line)
+		self.SUPPORTED_COIN_LIST = supported_coin_list
+
+		self.CURRENT_COIN_SYMBOL = os.environ.get("CURRENT_COIN_SYMBOL")
+
+		self.STRATEGY = os.environ.get("STRATEGY")
+
+		self.SELL_TIMEOUT = os.environ.get("SELL_TIMEOUT")
+		self.BUY_TIMEOUT = os.environ.get("BUY_TIMEOUT")
