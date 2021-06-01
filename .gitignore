@@ -12,5 +12,4 @@ venv/
 crypto_trading.db
 apprise.yml
 .DS_Store
-user.cfg
 .user.cfg.example
